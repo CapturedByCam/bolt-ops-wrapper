@@ -17,6 +17,6 @@ The wrapper serves:
 - `/apple-touch-icon.png`
 - `/icon-192.png`
 - `/icon-512.png`
+- `/icon-source.png`
 
 Add the custom-domain URL to the iPhone Home Screen, not the Apps Script URL.
-

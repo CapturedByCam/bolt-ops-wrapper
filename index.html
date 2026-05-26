@@ -34,7 +34,7 @@
       min-height: 100dvh;
       margin: 0;
       overflow: hidden;
-      background: #f5f6f8;
+      background: var(--black);
       font-family: Arial, sans-serif;
     }
 
@@ -46,16 +46,14 @@
       min-height: -webkit-fill-available;
       position: fixed;
       inset: 0;
+      padding-top: env(safe-area-inset-top);
     }
 
     iframe {
       display: block;
       width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      height: calc(100dvh + env(safe-area-inset-bottom));
-      min-height: -webkit-fill-available;
-      padding-bottom: env(safe-area-inset-bottom);
+      height: calc(100vh - env(safe-area-inset-top));
+      height: calc(100dvh - env(safe-area-inset-top));
       border: 0;
       background: #f5f6f8;
     }

@@ -53,7 +53,9 @@
       width: 100vw;
       height: 100vh;
       height: 100dvh;
+      height: calc(100dvh + env(safe-area-inset-bottom));
       min-height: -webkit-fill-available;
+      padding-bottom: env(safe-area-inset-bottom);
       border: 0;
       background: #f5f6f8;
     }

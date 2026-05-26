@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta id="viewportMeta" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,6 +16,35 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="manifest" href="/manifest.json">
   <title>Bolt Ops</title>
+  <script>
+    (function () {
+      var isStandalone = window.navigator.standalone === true ||
+        window.matchMedia("(display-mode: standalone)").matches;
+
+      if (!isStandalone) return;
+
+      var viewportMeta = document.getElementById("viewportMeta");
+      if (viewportMeta) {
+        viewportMeta.setAttribute(
+          "content",
+          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+        );
+      }
+
+      var blockGesture = function (event) {
+        event.preventDefault();
+      };
+
+      document.addEventListener("gesturestart", blockGesture, { passive: false });
+      document.addEventListener("gesturechange", blockGesture, { passive: false });
+      document.addEventListener("gestureend", blockGesture, { passive: false });
+      document.addEventListener("touchmove", function (event) {
+        if (event.scale && event.scale !== 1) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
   <style>
     :root {
       color-scheme: dark;
